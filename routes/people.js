@@ -6,10 +6,23 @@ const router = express.Router();
 router.use(requireAuth); // login wela inna officer/admin kenekta witharai
 
 const DETAIL_FIELDS = {
-  prisoner: ["caseNumber", "cellNumber", "offence", "admissionDate", "sentenceYears"],
-  doctor: ["specialization", "licenseNumber"],
-  visitor: ["visitingPrisoner", "relationship", "visitDate", "purpose"],
-  staff: ["department", "jobTitle"],
+  prisoner: [
+    "caseNumber", "cellNumber", "offence", "offenceSi", "offenceTa",
+    "admissionDate", "sentenceYears",
+    "guardianName", "guardianNic", "guardianPhone", "guardianAddress",
+  ],
+  doctor: [
+    "specialization", "licenseNumber",
+    "emergencyContactName", "emergencyContactNic", "emergencyContactPhone", "emergencyContactAddress",
+  ],
+  visitor: [
+    "visitingPrisoner", "relationship", "visitDate", "purpose",
+    "emergencyContactName", "emergencyContactNic", "emergencyContactPhone", "emergencyContactAddress",
+  ],
+  staff: [
+    "department", "jobTitle",
+    "emergencyContactName", "emergencyContactNic", "emergencyContactPhone", "emergencyContactAddress",
+  ],
 };
 const REQUIRED_DETAIL = { prisoner: "caseNumber", doctor: "licenseNumber" };
 const NIC_RE = /^([0-9]{9}[VX]|[0-9]{12})$/;
